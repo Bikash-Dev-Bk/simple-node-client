@@ -13,6 +13,27 @@ function App() {
 
   const handleAddUser = event => {
     event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+
+    const user = {name, email};
+    console.log(name, email);
+    event.target.reset();
+
+    fetch('http://localhost:5000/users',{
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      const newUser = [...users, user];
+      setUsers(newUser);
+    })
+    .catch(err => console.error(err))
   }
 
   return (
