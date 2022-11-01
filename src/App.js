@@ -51,7 +51,7 @@ function App() {
       <h3>Users: {users.length}</h3>
       <div>
         {
-          users.map(user => <p key={user.id}> Name: {user.name}, Email: {user.email}</p>)
+          users.map(user => <p key = {user._id} > Name: {user.name}, Email: {user.email}</p>)
         }
       </div>
     </div>
